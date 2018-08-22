@@ -1,21 +1,13 @@
-
-
- 
-<!-- table zwave_devices search -->
 <div id='api_settings'>
 <form action="?" method="post" enctype="multipart/form-data" name="frmEdit" class="form-horizontal">
 <fieldset>
 <div class="form-group">
  <div class="col-lg-6"> 
- <label class="control-label"> API Url: (*) </label>
+ <label class="control-label"> Incoming Webhook API Url: (*) </label>
  <input type="text" class="form-control" name="access_key" value="[#ACCESS_KEY#]" class="input">
 </div>
  </div>
-
-
-
-
-
+ 
 </div>
 
 
@@ -35,7 +27,7 @@
 <input type="hidden" name="mode" value="update">
 </div>
  
- [#module name="settings" action="admin" filter_name="notifyevents"#]
+ [#module name="settings" action="admin" filter_name="slack"#]
  
 </fieldset>
 </form>
