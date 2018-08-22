@@ -202,7 +202,9 @@ function checkSettings() {
 
 	$disabled=SETTINGS_SLACK_ENABLE;
 	$mgslevel=SETTINGS_SLACK_MSGLEVEL;
-	  if ($mgslevel >= (int)getGlobal('minMsgLevel') && $event=='SAY' && $disabled && !$details['ignoreVoice']) {
+	  if ((int)$mgslevel >= (int)getGlobal('minMsgLevel') && $event=='SAY' && $disabled && !$details['ignoreVoice']) {
+//	  if ( $event=='SAY' && $disabled && !$details['ignoreVoice']) {
+//	   $message=$mgslevel.':'.getGlobal('minMsgLevel').':'.$details['message'];
 	   $message=$details['message'];
 
 $url = SETTINGS_SLACK_APIURL;
