@@ -100,7 +100,9 @@ function run() {
   $out['ACTION']=$this->action;
   $out['TAB']=$this->tab;
   $this->data=$out;
-  $this->checkSettings();	
+  $this->checkSettings();
+
+
   $p=new parser(DIR_TEMPLATES.$this->name."/".$this->name.".html", $this->data, $this);
   $this->result=$p->result;
 }
@@ -115,6 +117,7 @@ function admin(&$out) {
  $this->getConfig();
  $out['ACCESS_KEY']=$this->config['ACCESS_KEY'];
  $out['DISABLED']=$this->config['DISABLED'];
+ $out['SLACK_TEST']=SETTINGS_SLACK_APIURL;	
 
  if ($this->view_mode=='update_settings') {
    global $access_key;
@@ -196,13 +199,18 @@ function checkSettings() {
 	
  function processSubscription($event, &$details) {
   $this->getConfig();
-  if ($event=='SAY' && !$this->config['DISABLED'] && !$details['ignoreVoice']) {
+//$disabled=$this->config['DISABLED'];
+$disabled=SETTINGS_SLACK_ENABLE;
+$mgslevel=SETTINGS_SLACK_MSGLEVEL;
+
+  if ($event=='SAY' && !$disabled && !$details['ignoreVoice']) {
     $level=$details['level'];
     $message=$details['message'];
     
 
 
-$url = $this->config['ACCESS_KEY'];
+//$url = $this->config['ACCESS_KEY'];
+$url = SETTINGS_SLACK_APIURL;
 //$text = isset($params['text']) ? $params['text'] : "Notification text not specified";
 $text=$message;
 
