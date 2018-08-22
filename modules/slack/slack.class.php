@@ -237,13 +237,12 @@ $text=$message;
 
 }
 
- function sendImageToAll($path, $message) {
+ function sendImageToAll($path, $text) {
 
 $url = SETTINGS_SLACK_APIURL;
-$text=$message;
  define('SLACK_WEBHOOK', $url); // это не забудьте поменять на свое
 //  $message = array('payload' => json_encode(array('text' => $text,   "image_url"=> $path)));
-
+/*
 $json='"attachments": [
         {
             "fallback": "Required plain-text summary of the attachment.",
@@ -273,6 +272,32 @@ $json='"attachments": [
  $message = $json;
 
 
+$json='{
+    "attachments": [
+        {
+            "fallback": "Required plain-text summary of the attachment.",
+            "text": "Optional text that appears within the attachment",
+            "image_url": '.$path.'
+        }
+    ]
+}';
+
+$message = array('payload' => $json);
+*/
+
+$message = '
+{
+    "text": "'.$text.'",
+    "attachments": [
+        {
+            "fallback": "Required plain-text summary of the attachment.",
+            "text": "Optional text that appears within the attachment",
+            "image_url": "'.$path.'"
+        }
+    ]
+}';
+sg('test.json2',$message);
+
   $c = curl_init(SLACK_WEBHOOK);
   curl_setopt($c, CURLOPT_SSL_VERIFYPEER, false);
   curl_setopt($c, CURLOPT_POST, true);
@@ -281,6 +306,64 @@ $json='"attachments": [
   curl_close($c);
 
 }
+
+ function sendButtonToAll($path, $message) {
+
+$url = SETTINGS_SLACK_APIURL;
+$text=$message;
+ define('SLACK_WEBHOOK', $url); // это не забудьте поменять на свое
+
+$message = '
+{
+    "text": "Robert DeSoto added a new task",
+    "attachments": [
+        {
+            "fallback": "Plan a vacation",
+            "author_name": "Owner: rdesoto",
+            "title": "Plan a vacation",
+            "text": "Ive been working too hard, its time for a break.",
+            "actions": [
+                {
+                    "name": "action",
+                    "type": "button",
+                    "text": "Complete this task",
+                    "style": "",
+                    "value": "complete"
+                },
+                {
+                    "name": "tags_list",
+                    "type": "select",
+                    "text": "Add a tag...",
+                    "data_source": "static",
+                    "options": [
+                        {
+                            "text": "Launch Blocking",
+                            "value": "launch-blocking"
+                        },
+                        {
+                            "text": "Enhancement",
+                            "value": "enhancement"
+                        },
+                        {
+                            "text": "Bug",
+                            "value": "bug"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}';
+
+  $c = curl_init(SLACK_WEBHOOK);
+  curl_setopt($c, CURLOPT_SSL_VERIFYPEER, false);
+  curl_setopt($c, CURLOPT_POST, true);
+  curl_setopt($c, CURLOPT_POSTFIELDS, $message);
+  curl_exec($c);
+  curl_close($c);
+
+}
+
 
 
 /**
