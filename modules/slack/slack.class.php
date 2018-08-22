@@ -152,20 +152,20 @@ function checkSettings() {
  // Здесь задаются нужные нам параметры - пример взят из календаря, как раз есть текстбокс и радиобуттон 
   $settings=array(
    array(
-    'NAME'=>'NOTIFYEVENTS_APIURL', 
+    'NAME'=>'SLAK_APIURL', 
     'TITLE'=>'APIURL', 
     'TYPE'=>'text',
     'DEFAULT'=>'14'
     ),
    array(	  
-'NAME'=>'NOTIFYEVENTS_MSGLEVEL', 
+'NAME'=>'SLAK_MSGLEVEL', 
     'TITLE'=>'MSGLEVEL', 
     'TYPE'=>'text',
     'DEFAULT'=>'2'
     ),	  
 
    array(
-    'NAME'=>'NOTIFYEVENTS_ENABLE', 
+    'NAME'=>'SLAK_ENABLE', 
     'TITLE'=>'Enable',
     'TYPE'=>'yesno',
     'DEFAULT'=>'1'
