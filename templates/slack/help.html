@@ -59,6 +59,15 @@ $slack_module->sendMessageToAll("test message to all");</br>
 		</div> </div> </div>
 
 
+Отправка картинок из сценариев: </br>
+
+include_once(DIR_MODULES . 'slack/slack.class.php');</br>
+$slack_module = new slack();</br>
+$slack_module->sendMessageToAll("test message to all");</br>
+$slack_module->sendImageToAll("http://192.168.1.xx/img.jpg","test image");</br>
+</br>
+
+		</div> </div> </div>
 		
 <div class="panel-group" id="accordion">
 	<div class="panel panel-info">
