@@ -2,8 +2,16 @@
 <a href="https://slack.com/"> <img src="../img/modules/slack.png"   height="42" width="42" > slack.com</a>
 	 <ul class="nav nav-tabs">
 
-<li [#if TAB=="" || TAB=="config" #] class="active" [#endif#]><a href="?data_source=<#DATA_SOURCE#>&view_mode=<#VIEW_MODE#>&id=<#ID#>&tab=config">Настройки</a> </li>
-<li [#if TAB=="help" #] class="active" [#endif#]><a href="?view_mode=<#VIEW_MODE#>&tab=help">Help</a> </li>	
+
+
+<li [#if TAB=="" || TAB=="config" #] class="active" [#endif#]><a href="?data_source=<#DATA_SOURCE#>&view_mode=<#VIEW_MODE#>&id=<#ID#>&tab=config"><span class="glyphicon glyphicon-cog"></span> Настройки</a></li>
+<li [#if TAB=="help" #] class="active" [#endif#]><a href="?view_mode=<#VIEW_MODE#>&tab=help"><span class="glyphicon glyphicon-info-sign"></span> Помощь</a> </li>	
 </ul>
-[#if TAB="config" || TAB==""#] [#inc config.html#] [#endif#]
+[#if TAB="config" || TAB==""#]
+<div>
+<br>
+ [#module name="settings" action="admin" filter_name="SLACK"#]
+</div>
+
+ [#endif#]
 [#if TAB="help"#] [#inc help.html#] [#endif#]
