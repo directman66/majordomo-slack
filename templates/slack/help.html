@@ -5,7 +5,9 @@
 		<a data-toggle="collapse" data-parent="#accordion" href="#sms_help">Информация</a>
 		</div>
 		<div class="panel-body collapse" id="sms_help">
-		Модуль взаимодействия с сервисом https://slack.com
+Slack — корпоративный мессенджер. Запущен в тестовом режиме в августе 2013 года, публичный релиз состоялся 12 февраля 2014. В первый день тестирования зарегистрировались 8 тысяч компаний. По данным компании на июнь 2015, Slack ежедневно используют 1,1 миллиона пользователей[1]. Slack стал самым быстрорастущим бизнес-приложением в истории[2].
+<a href="https://ru.wikipedia.org/wiki/Slack">Wikipedia</a>
+
 			
 			</br>     </br>
 
@@ -20,7 +22,40 @@
 		</div>
 		<div class="panel-body collapse" id="nach">
 		<p>
-1. Регистрируемся или авторизовываемся на https://slack.com</br> </br>
+
+1. Регистрируемся https://api.slack.com/ </br> 
+2. Создаем новое приложение  https://api.slack.com/apps/new
+
+AppName — название приложения.  </br>
+Short description — краткое описание приложения.  </br> 
+Describe what your app does on Slack — полное описание приложения.  </br> 
+Link to clear instructions on how to install your Slack app.  </br>
+Link to support for your Slack app — две ссылки на страницы с описанием установки и использования данного приложения.  </br>
+
+На вкладке Basic Information выбираем Add features and functionality, далее Incoming Webhooks, и включаем Activate Incoming Webhooks  </br>
+
+На странице Activate Incoming Webhooks на нужно Webhook URLs for Your Workspace  </br>
+
+Webhook имеет формат:  </br> 
+https://hooks.slack.com/services/T00000 ... XXXXXXXXXX  </br> </br> - Эту строку помещаем в настройки модуля.
+
+
+		</div> </div> </div>
+
+<div class="panel-group" id="accordion">
+	<div class="panel panel-info">
+		<div class="panel-heading">
+		<a data-toggle="collapse" data-parent="#accordion" href="#sendmsg">Отправка сообщений</a>
+		</div>
+		<div class="panel-body collapse" id="sendmsg">
+		<p>
+Подписка на чат системы</br>
+Подписка на чат системы производится автоматически при установке модуля. </br></br></br>
+Отправка текстовых сообщений из сценариев: </br>
+
+include_once(DIR_MODULES . 'slack/slack.class.php');</br>
+$slack_module = new slack();</br>
+$slack_module->sendMessageToAll("test message to all");</br>
 		</div> </div> </div>
 
 
