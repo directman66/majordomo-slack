@@ -199,34 +199,23 @@ function checkSettings() {
 	
  function processSubscription($event, &$details) {
   $this->getConfig();
-//$disabled=$this->config['DISABLED'];
-$disabled=SETTINGS_SLACK_ENABLE;
-$mgslevel=SETTINGS_SLACK_MSGLEVEL;
 
-  if ($event=='SAY' && $disabled && !$details['ignoreVoice']) {
-    $level=$details['level'];
-    $message=$details['message'];
-    
+	$disabled=SETTINGS_SLACK_ENABLE;
+	$mgslevel=SETTINGS_SLACK_MSGLEVEL;
+	  if ($mgslevel >= (int)getGlobal('minMsgLevel') && $event=='SAY' && $disabled && !$details['ignoreVoice']) {
+	   $message=$details['message'];
 
-
-//$url = $this->config['ACCESS_KEY'];
 $url = SETTINGS_SLACK_APIURL;
-//$text = isset($params['text']) ? $params['text'] : "Notification text not specified";
 $text=$message;
 
  define('SLACK_WEBHOOK', $url); // это не забудьте поменять на свое
   $message = array('payload' => json_encode(array('text' => $text)));
-// 'text' => 'Проверка' - текст сообщения, в данном случае нам придет - Проверка
-
   $c = curl_init(SLACK_WEBHOOK);
   curl_setopt($c, CURLOPT_SSL_VERIFYPEER, false);
   curl_setopt($c, CURLOPT_POST, true);
   curl_setopt($c, CURLOPT_POSTFIELDS, $message);
   curl_exec($c);
   curl_close($c);
-
-
-
  }
 
 }
