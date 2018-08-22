@@ -296,7 +296,7 @@ $message = '
         }
     ]
 }';
-sg('test.json2',$message);
+//sg('test.json2',$message);
 
   $c = curl_init(SLACK_WEBHOOK);
   curl_setopt($c, CURLOPT_SSL_VERIFYPEER, false);
