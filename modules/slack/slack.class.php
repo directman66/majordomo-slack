@@ -203,7 +203,7 @@ function checkSettings() {
 $disabled=SETTINGS_SLACK_ENABLE;
 $mgslevel=SETTINGS_SLACK_MSGLEVEL;
 
-  if ($event=='SAY' && !$disabled && !$details['ignoreVoice']) {
+  if ($event=='SAY' && $disabled && !$details['ignoreVoice']) {
     $level=$details['level'];
     $message=$details['message'];
     
