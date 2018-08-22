@@ -152,20 +152,20 @@ function checkSettings() {
  // Здесь задаются нужные нам параметры - пример взят из календаря, как раз есть текстбокс и радиобуттон 
   $settings=array(
    array(
-    'NAME'=>'SLAK_APIURL', 
+    'NAME'=>'SLACK_APIURL', 
     'TITLE'=>'APIURL', 
     'TYPE'=>'text',
-    'DEFAULT'=>'14'
+    'DEFAULT'=>'https://hooks.slack.com/services/xxxx/'
     ),
    array(	  
-'NAME'=>'SLAK_MSGLEVEL', 
+'NAME'=>'SLACK_MSGLEVEL', 
     'TITLE'=>'MSGLEVEL', 
     'TYPE'=>'text',
     'DEFAULT'=>'2'
     ),	  
 
    array(
-    'NAME'=>'SLAK_ENABLE', 
+    'NAME'=>'SLACK_ENABLE', 
     'TITLE'=>'Enable',
     'TYPE'=>'yesno',
     'DEFAULT'=>'1'
