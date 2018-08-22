@@ -114,18 +114,17 @@ function run() {
 function admin(&$out) {
  $this->getConfig();
  $out['ACCESS_KEY']=$this->config['ACCESS_KEY'];
- $out['SPEAKER']=$this->config['SPEAKER'];
- $out['EMOTION']=$this->config['EMOTION'];
  $out['DISABLED']=$this->config['DISABLED'];
+
  if ($this->view_mode=='update_settings') {
    global $access_key;
-   $this->config['ACCESS_KEY']=$access_key;
+//   $this->config['ACCESS_KEY']=$access_key;
  	global $speaker;
-   $this->config['SPEAKER']=$speaker;
+//   $this->config['SPEAKER']=$speaker;
 	global $emotion;
-   $this->config['EMOTION']=$emotion;
+//   $this->config['EMOTION']=$emotion;
    global $disabled;
-   $this->config['DISABLED']=$disabled;
+//   $this->config['DISABLED']=$disabled;
    $this->saveConfig();
    $this->redirect("?ok=1");
  }
@@ -153,7 +152,7 @@ function checkSettings() {
   $settings=array(
    array(
     'NAME'=>'SLACK_APIURL', 
-    'TITLE'=>'APIURL', 
+    'TITLE'=>'Incoming Webhook API Url: (*)', 
     'TYPE'=>'text',
     'DEFAULT'=>'https://hooks.slack.com/services/xxxx/'
     ),
@@ -174,7 +173,7 @@ function checkSettings() {
 
    );
 
-/*
+
    foreach($settings as $k=>$v) {
     $rec=SQLSelectOne("SELECT ID FROM settings WHERE NAME='".$v['NAME']."'");
     if (!$rec['ID']) {
@@ -190,7 +189,7 @@ function checkSettings() {
    }
 
  	
- */
+ 
 	
 	
 }
@@ -206,22 +205,7 @@ function checkSettings() {
 $url = $this->config['ACCESS_KEY'];
 //$text = isset($params['text']) ? $params['text'] : "Notification text not specified";
 $text=$message;
-/*
-$options = array(
-    'http' => array(
-        'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
-        'method'  => 'POST',
-        'content' => http_build_query(array('text' => $text))
-    )
-);
-$context = stream_context_create($options);
-$result = file_get_contents($url, false, $context);
-if ($result === false) {
-     echo 'Error';
-} else {
-     echo 'Done';
-}
-*/
+
  define('SLACK_WEBHOOK', $url); // это не забудьте поменять на свое
   $message = array('payload' => json_encode(array('text' => $text)));
 // 'text' => 'Проверка' - текст сообщения, в данном случае нам придет - Проверка
