@@ -206,7 +206,7 @@ function checkSettings() {
 $url = $this->config['ACCESS_KEY'];
 //$text = isset($params['text']) ? $params['text'] : "Notification text not specified";
 $text=$message;
-
+/*
 $options = array(
     'http' => array(
         'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
@@ -221,6 +221,19 @@ if ($result === false) {
 } else {
      echo 'Done';
 }
+*/
+ define('SLACK_WEBHOOK', $url); // это не забудьте поменять на свое
+  $message = array('payload' => json_encode(array('text' => $text)));
+// 'text' => 'Проверка' - текст сообщения, в данном случае нам придет - Проверка
+
+  $c = curl_init(SLACK_WEBHOOK);
+  curl_setopt($c, CURLOPT_SSL_VERIFYPEER, false);
+  curl_setopt($c, CURLOPT_POST, true);
+  curl_setopt($c, CURLOPT_POSTFIELDS, $message);
+  curl_exec($c);
+  curl_close($c);
+
+
 
  }
 
