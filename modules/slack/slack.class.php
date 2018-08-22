@@ -163,7 +163,7 @@ function checkSettings() {
 'NAME'=>'SLACK_MSGLEVEL', 
     'TITLE'=>'MSGLEVEL', 
     'TYPE'=>'text',
-    'DEFAULT'=>'2'
+    'DEFAULT'=>'0'
     ),	  
 
    array(
