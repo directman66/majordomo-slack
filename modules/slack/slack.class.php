@@ -299,7 +299,7 @@ $message = '
     "attachments": [
         {
             "fallback": "Required plain-text summary of the attachment.",
-            "text": "Optional text that appears within the attachment",
+            "text": "",
             "image_url": "'.$path.'"
         }
     ]
