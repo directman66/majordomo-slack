@@ -159,14 +159,22 @@ function checkSettings() {
     'TYPE'=>'text',
     'DEFAULT'=>'https://hooks.slack.com/services/xxxx/'
     ),
-   array(	  
+
+   array(
+    'NAME'=>'SLACK_TOKEN', 
+    'TITLE'=>'Legacy token',
+    'TYPE'=>'text',
+    'DEFAULT'=>'xoxp-xxxxxxxx-xxxxxxxxxxxxx-xxxxxxxx-xxxxxxxxxxx'
+    )
+	  
+	  
+,array(	  
 'NAME'=>'SLACK_MSGLEVEL', 
     'TITLE'=>'MSGLEVEL', 
     'TYPE'=>'text',
     'DEFAULT'=>'0'
-    ),	  
-
-   array(
+    )
+,   array(
     'NAME'=>'SLACK_ENABLE', 
     'TITLE'=>'Enable',
     'TYPE'=>'yesno',
