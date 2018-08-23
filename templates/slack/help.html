@@ -59,14 +59,11 @@ https://hooks.slack.com/services/T00000 ... XXXXXXXXXX  </br> </br> - Эту с�
 include_once(DIR_MODULES . 'slack/slack.class.php');</br>
 $slack_module = new slack();</br>
 $slack_module->sendMessageToAll("test message to all");</br>
-		</div> </div> </div>
-
-
+		
 Отправка картинок из сценариев: </br>
 
 include_once(DIR_MODULES . 'slack/slack.class.php');</br>
 $slack_module = new slack();</br>
-$slack_module->sendMessageToAll("test message to all");</br>
 $slack_module->sendImageToAll("http://192.168.1.xx/img.jpg","test image");</br>
 </br>
 
