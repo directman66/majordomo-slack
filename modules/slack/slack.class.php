@@ -300,7 +300,12 @@ $message = '
         {
             "fallback": "Required plain-text summary of the attachment.",
             "text": "",
-            "image_url": "'.$path.'"
+            "image_url": "'.$path.'",
+            "footer_icon": "'.$path.'",
+            "author_icon": "'.$path.'",
+            "thumb_url": "'.$path.'"
+
+,"ts": '.time().'
         }
     ]
 }';
